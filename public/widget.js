@@ -149,6 +149,7 @@ var CATS = [
 .aa{--bg:#08080b;--panel:#111116;--panel2:#16161d;--line:#26262f;--text:#ececf1;--muted:#9a9aa8;--dim:#8a8a98;--acc:#2bc4d4;--acc2:#9eecf2;--ring:#1d4c55;--ink:#03181c;
   background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
 .aa *{box-sizing:border-box}
+.aa [hidden]{display:none!important}
 .aa a{color:var(--acc2)}
 .aa .mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
 .aa .page{max-width:1080px;margin:0 auto;padding:0 32px}

@@ -75,7 +75,11 @@ export async function askClaude({ system, user, maxTokens = 900 }) {
     }),
     signal: AbortSignal.timeout(25000),
   });
-  if (!res.ok) throw new Error("ai_" + res.status);
+  if (!res.ok) {
+    let detail = "";
+    try { const e = await res.json(); detail = (e.error && (e.error.type + ": " + e.error.message)) || ""; } catch {}
+    throw new Error("ai_" + res.status + " " + detail.slice(0, 300));
+  }
   const data = await res.json();
   const text = (data.content || []).map((c) => c.text || "").join("");
   const start = text.indexOf("{");
