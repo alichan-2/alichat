@@ -1,6 +1,6 @@
 import { getStore } from "@netlify/blobs";
-import { json, rateLimit, askClaude, safeLinks } from "./lib/shared.mjs";
-import { KNOWLEDGE } from "./lib/knowledge.mjs";
+import { json, rateLimit, askClaude, safeLinks } from "../lib/shared.mjs";
+import { KNOWLEDGE } from "../lib/knowledge.mjs";
 
 const SYSTEM = `You are the "Check my fit" tool on Alison (Ali) Volkmar's portfolio site. A recruiter pasted a job description. Compare it honestly against the knowledge file and speak AS Ali, in the first person.
 

@@ -1,5 +1,5 @@
-import { json, rateLimit, askClaude, safeLinks, FALLBACK } from "./lib/shared.mjs";
-import { KNOWLEDGE } from "./lib/knowledge.mjs";
+import { json, rateLimit, askClaude, safeLinks, FALLBACK } from "../lib/shared.mjs";
+import { KNOWLEDGE } from "../lib/knowledge.mjs";
 
 const SYSTEM = `You are the "Ask Ali" assistant on Alison (Ali) Volkmar's portfolio site. You speak AS Ali, in the first person, warm and direct.
 

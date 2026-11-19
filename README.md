@@ -9,7 +9,7 @@ The chat and job-description fit check for alivolkmar.com.
   - `/api/chat`: answers free-text questions from the knowledge file
   - `/api/fit`: compares a pasted job description and logs it
   - `/api/jds?key=ADMIN_KEY`: your private list of pasted job descriptions
-- `netlify/functions/lib/knowledge.mjs`: the knowledge file the AI answers from
+- `netlify/lib/knowledge.mjs`: the knowledge file the AI answers from
 - `squarespace-code-block.html`: paste into your homepage
 - `public/index.html`: a test page (open your Netlify URL to try it)
 

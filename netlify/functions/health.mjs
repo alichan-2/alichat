@@ -1,4 +1,4 @@
-import { json } from "./lib/shared.mjs";
+import { json } from "../lib/shared.mjs";
 
 // The homepage pings this before showing the chat. If it fails, the
 // normal homepage stays.
