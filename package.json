@@ -1,0 +1,13 @@
+{
+  "name": "ask-ali",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ask Ali: chat + job-description fit check for alivolkmar.com",
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

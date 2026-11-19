@@ -1,0 +1,43 @@
+<!-- =====================================================================
+  ASK ALI · Squarespace homepage code block
+  Paste into ONE Code Block at the very top of your homepage.
+  1. Netlify address is filled in (alichat3.netlify.app).
+  2. Optional: replace YOUR-OLD-HERO-ID with your old top section's
+     data-section-id to hide it when the chat loads.
+  If Netlify or the AI is down, or too slow, this block removes itself and
+  your normal homepage shows. Delete the block to turn the chat off.
+===================================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<div id="askali-root" style="display:none"></div>
+<script>
+(function () {
+  var BASE = 'https://alichat3.netlify.app';
+  var root = document.getElementById('askali-root');
+  var done = false;
+  var timer = setTimeout(fail, 4000);
+
+  function fail() { if (done) return; done = true; root.remove(); }
+
+  fetch(BASE + '/api/health', { cache: 'no-store' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('down');
+      var s = document.createElement('script');
+      s.src = BASE + '/widget.js';
+      s.onload = function () {
+        if (done) return;
+        try {
+          window.AskAli.mount(root);
+          root.style.display = '';
+          document.documentElement.classList.add('askali-on');
+          done = true; clearTimeout(timer);
+        } catch (e) { fail(); }
+      };
+      s.onerror = fail;
+      document.head.appendChild(s);
+    })
+    .catch(fail);
+})();
+</script>
+<style>
+  .askali-on [data-section-id="YOUR-OLD-HERO-ID"] { display: none; }
+</style>
