@@ -58,7 +58,8 @@ export async function rateLimit(req, context, kind) {
 
 // Calls Claude. Returns parsed JSON from the model's reply.
 export async function askClaude({ system, user, maxTokens = 900 }) {
-  const key = process.env.ANTHROPIC_API_KEY;
+  // Trim stray spaces, line breaks or quotes from a pasted key.
+  const key = String(process.env.ANTHROPIC_API_KEY || "").trim().replace(/^["']+|["']+$/g, "").trim();
   if (!key) throw new Error("no_key");
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",

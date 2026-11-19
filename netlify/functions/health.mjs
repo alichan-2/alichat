@@ -11,7 +11,11 @@ export default async (req) => {
       await askClaude({ system: 'Reply with {"ok":true}', user: "ping", maxTokens: 20 });
       return json(req, 200, { ok: true, ai: true, aiWorks: true, model: process.env.MODEL || "claude-haiku-5-5" });
     } catch (e) {
-      return json(req, 200, { ok: true, aiWorks: false, model: process.env.MODEL || "claude-haiku-5-5", error: String(e.message).slice(0, 400) });
+      const raw = String(process.env.ANTHROPIC_API_KEY || "");
+      const k = raw.trim();
+      // Safe hints only: never the key itself.
+      const hint = { length: raw.length, trimmedLength: k.length, startsWith: k.slice(0, 7), hadSpaces: raw !== k, hadQuotes: /["']/.test(raw) };
+      return json(req, 200, { ok: true, aiWorks: false, model: process.env.MODEL || "claude-haiku-5-5", error: String(e.message).slice(0, 400), keyHint: hint });
     }
   }
   return json(req, 200, { ok: true, ai: Boolean(process.env.ANTHROPIC_API_KEY) });
