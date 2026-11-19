@@ -146,13 +146,39 @@ var CATS = [
 ];
 
   var CSS = `
-.aa{--bg:#08080b;--panel:#111116;--panel2:#16161d;--line:#26262f;--text:#ececf1;--muted:#9a9aa8;--dim:#8a8a98;--acc:#2bc4d4;--acc2:#9eecf2;--ring:#1d4c55;--ink:#03181c;
-  background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.aa{--bg:rgba(4,12,28,.78);--panel:rgba(10,22,46,.74);--panel2:rgba(14,30,60,.78);--line:rgba(130,190,235,.18);--text:#ececf1;--muted:#9a9aa8;--dim:#8a8a98;--acc:#2bc4d4;--acc2:#9eecf2;--ring:#1d4c55;--ink:#03181c;
+  position:relative;overflow:hidden;background:linear-gradient(180deg,#060f26 0,#0b2149 calc(var(--h,600px) - 160px),#14427a var(--h,600px),#071a36 calc(var(--h,600px) + 1px),#061428 calc(var(--h,600px) + 220px),#050e1e 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
 .aa *{box-sizing:border-box}
 .aa [hidden]{display:none!important}
 .aa a{color:var(--acc2)}
 .aa .mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
-.aa .page{max-width:1080px;margin:0 auto;padding:0 32px}
+.aa .page{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 32px}
+.aa .sky{position:absolute;inset:0;pointer-events:none;z-index:0}
+.aa .stars{position:absolute;left:0;right:0;top:0;height:var(--h,600px);opacity:.9;
+  background-image:radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 120px 80px,#cfe8ff,transparent),radial-gradient(1px 1px at 200px 150px,#fff,transparent),radial-gradient(1.5px 1.5px at 60px 190px,#bfe3ff,transparent),radial-gradient(1px 1px at 260px 40px,#fff,transparent),radial-gradient(1px 1px at 170px 230px,#e6f4ff,transparent),radial-gradient(2px 2px at 230px 260px,#fff,transparent);
+  background-size:290px 290px;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent);animation:aatwinkle 6s ease-in-out infinite alternate}
+.aa .stars.b{background-size:410px 410px;background-position:90px 60px;opacity:.6;animation-delay:-3s}
+@keyframes aatwinkle{from{opacity:.45}to{opacity:.95}}
+.aa .moon{position:absolute;top:56px;right:7%;width:110px;height:110px;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,#ffffff 0,#e8f4ff 40%,#bcd9f5 75%,#9cc3ea 100%);
+  box-shadow:0 0 60px 18px rgba(170,215,255,.45),0 0 160px 60px rgba(90,160,230,.25)}
+.aa .moon::before,.aa .moon::after{content:"";position:absolute;border-radius:50%;background:rgba(140,175,215,.35)}
+.aa .moon::before{width:22px;height:22px;left:28px;top:56px}
+.aa .moon::after{width:14px;height:14px;left:64px;top:30px}
+.aa .cloud{position:absolute;height:46px;border-radius:999px;background:rgba(120,175,235,.22);filter:blur(3px);animation:aadrift 70s linear infinite alternate}
+.aa .cloud::before,.aa .cloud::after{content:"";position:absolute;border-radius:50%;background:inherit}
+.aa .cloud::before{width:60%;height:150%;left:12%;bottom:30%}
+.aa .cloud::after{width:42%;height:120%;right:12%;bottom:35%}
+.aa .c1{width:260px;top:150px;right:16%}
+.aa .c2{width:340px;top:40px;left:-60px;opacity:.8;animation-duration:90s}
+.aa .c3{width:220px;top:calc(var(--h,600px) - 190px);left:38%;opacity:.7;animation-duration:80s}
+.aa .c4{width:300px;top:calc(var(--h,600px) - 130px);right:-40px;opacity:.6}
+@keyframes aadrift{from{transform:translateX(-30px)}to{transform:translateX(40px)}}
+.aa .sea{position:absolute;left:0;right:0;top:var(--h,600px);height:200px;
+  background:repeating-linear-gradient(180deg,rgba(150,210,255,.07) 0 2px,transparent 2px 14px),linear-gradient(#0e3466,#071a36 60%,transparent)}
+.aa .glint{position:absolute;top:var(--h,600px);right:calc(7% + 25px);width:60px;height:180px;
+  background:radial-gradient(ellipse at top,rgba(200,235,255,.55),transparent 70%);filter:blur(4px);animation:aatwinkle 4s ease-in-out infinite alternate}
+.aa .rock{position:absolute;top:calc(var(--h,600px) - 70px);left:4%;width:70px;height:90px;background:linear-gradient(135deg,#1c4f7d,#0a2443);clip-path:polygon(20% 100%,30% 30%,48% 0,62% 25%,70% 10%,85% 55%,100% 100%)}
 .aa .hero{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:center;padding:64px 0 48px}
 .aa .who{display:flex;flex-direction:column;gap:10px}
 .aa .photo{width:220px;height:220px;border-radius:50%;object-fit:cover;border:2px solid var(--ring);display:block;background:radial-gradient(circle at 50% 40%,#123c45,#0a1315 75%)}
@@ -163,8 +189,9 @@ var CATS = [
 .aa .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer;font-family:inherit}
 .aa .btn.primary{background:var(--acc);border-color:var(--acc);color:var(--ink)}
 .aa .ask{display:flex;flex-direction:column;gap:14px;min-width:0}
+.aa .bubble,.aa .summary,.aa .answer,.aa .card,.aa .tile,.aa .grid a{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .aa .bubble{position:relative;background:var(--panel);border:1px solid var(--ring);border-radius:28px;padding:28px 30px;display:flex;flex-direction:column;gap:16px}
-.aa .tail{position:absolute;left:-11px;top:60px;width:20px;height:20px;background:var(--panel);border-left:1px solid var(--ring);border-bottom:1px solid var(--ring);transform:rotate(45deg)}
+.aa .tail{position:absolute;left:-11px;top:60px;width:20px;height:20px;background:#0b1934;border-left:1px solid var(--ring);border-bottom:1px solid var(--ring);transform:rotate(45deg)}
 .aa .hello{margin:0;font-size:26px;font-weight:650;letter-spacing:-.015em}
 .aa form{display:flex;gap:8px;margin:0}
 .aa input,.aa textarea{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:16px;font-family:inherit}
@@ -219,12 +246,16 @@ var CATS = [
 .aa .grid a:hover{border-color:var(--acc)}
 .aa .spin{display:inline-block;width:14px;height:14px;border:2px solid var(--ring);border-top-color:var(--acc);border-radius:50%;animation:aaspin 1s linear infinite;vertical-align:-2px;margin-right:8px}
 @keyframes aaspin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.aa .spin{animation:none}}
+@media (prefers-reduced-motion:reduce){.aa .spin,.aa .stars,.aa .cloud,.aa .glint{animation:none}}
 @media (max-width:760px){
  .aa .page{padding:0 18px}
  .aa .hero{grid-template-columns:1fr;gap:28px;padding:32px 0 36px}
  .aa .who{align-items:center;text-align:center}
  .aa .photo{width:150px;height:150px}
+ .aa .moon{width:70px;height:70px;top:24px;right:6%}
+ .aa .moon::before{width:14px;height:14px;left:18px;top:36px}.aa .moon::after{width:9px;height:9px;left:42px;top:20px}
+ .aa .glint{right:calc(6% + 15px)}
+ .aa .rock{display:none}
  .aa .btns{justify-content:center}
  .aa .bubble{padding:22px 20px}
  .aa .tail{left:50%;top:-11px;margin-left:-10px;transform:rotate(135deg)}
@@ -324,7 +355,8 @@ var CATS = [
       var st = document.createElement("style"); st.id = "aa-style"; st.textContent = CSS; document.head.appendChild(st);
     }
     root.innerHTML =
-      '<div class="aa"><div class="page">' +
+      '<div class="aa"><div class="sky" aria-hidden="true"><div class="stars"></div><div class="stars b"></div><div class="moon"></div>' +
+      '<div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="cloud c4"></div><div class="sea"></div><div class="glint"></div><div class="rock"></div></div><div class="page">' +
       '<section class="hero" aria-label="Ask Ali"><div class="who">' +
       '<img class="photo" src="' + ASSET + 'headshot.png" alt="Alison Volkmar">' +
       '<h1>Alison Volkmar</h1><div class="title">Creative Technologist &amp; Senior Visual Designer</div>' +
@@ -353,6 +385,10 @@ var CATS = [
       "</div></section></div></div>";
 
     var $ = function (sel) { return root.querySelector(sel); };
+    var aa = root.querySelector(".aa"), hero = root.querySelector(".hero");
+    function horizon() { aa.style.setProperty("--h", (hero.offsetTop + hero.offsetHeight + 30) + "px"); }
+    horizon(); window.addEventListener("resize", horizon);
+    var photo = root.querySelector(".photo"); if (photo && !photo.complete) photo.addEventListener("load", horizon);
     var results = $("[data-results]"), fit = $("[data-fit]"), fitToggle = $("[data-fittoggle]");
     var input = $("#aa-q"), askBtn = $("[data-ask] .go");
 
@@ -415,5 +451,5 @@ var CATS = [
     });
   }
 
-  window.AskAli = { mount: mount, version: "1.0.0" };
+  window.AskAli = { mount: mount, version: "1.1.0" };
 })();
