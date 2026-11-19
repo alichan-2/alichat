@@ -159,27 +159,27 @@ var CATS = [
   background-size:290px 290px;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent);animation:aatwinkle 6s ease-in-out infinite alternate}
 .aa .stars.b{background-size:410px 410px;background-position:90px 60px;opacity:.6;animation-delay:-3s}
 @keyframes aatwinkle{from{opacity:.45}to{opacity:.95}}
-.aa .moon{position:absolute;top:56px;right:7%;width:110px;height:110px;border-radius:50%;
+.aa .moon{position:absolute;top:26px;right:14%;width:96px;height:96px;border-radius:50%;
   background:radial-gradient(circle at 38% 35%,#ffffff 0,#e8f4ff 40%,#bcd9f5 75%,#9cc3ea 100%);
   box-shadow:0 0 60px 18px rgba(170,215,255,.45),0 0 160px 60px rgba(90,160,230,.25)}
 .aa .moon::before,.aa .moon::after{content:"";position:absolute;border-radius:50%;background:rgba(140,175,215,.35)}
-.aa .moon::before{width:22px;height:22px;left:28px;top:56px}
-.aa .moon::after{width:14px;height:14px;left:64px;top:30px}
+.aa .moon::before{width:19px;height:19px;left:24px;top:50px}
+.aa .moon::after{width:12px;height:12px;left:56px;top:26px}
 .aa .cloud{position:absolute;height:46px;border-radius:999px;background:rgba(120,175,235,.22);filter:blur(3px);animation:aadrift 70s linear infinite alternate}
 .aa .cloud::before,.aa .cloud::after{content:"";position:absolute;border-radius:50%;background:inherit}
 .aa .cloud::before{width:60%;height:150%;left:12%;bottom:30%}
 .aa .cloud::after{width:42%;height:120%;right:12%;bottom:35%}
-.aa .c1{width:260px;top:150px;right:16%}
+.aa .c1{width:240px;top:96px;right:24%}
 .aa .c2{width:340px;top:40px;left:-60px;opacity:.8;animation-duration:90s}
 .aa .c3{width:220px;top:calc(var(--h,600px) - 190px);left:38%;opacity:.7;animation-duration:80s}
 .aa .c4{width:300px;top:calc(var(--h,600px) - 130px);right:-40px;opacity:.6}
 @keyframes aadrift{from{transform:translateX(-30px)}to{transform:translateX(40px)}}
 .aa .sea{position:absolute;left:0;right:0;top:var(--h,600px);height:200px;
   background:repeating-linear-gradient(180deg,rgba(150,210,255,.07) 0 2px,transparent 2px 14px),linear-gradient(#0e3466,#071a36 60%,transparent)}
-.aa .glint{position:absolute;top:var(--h,600px);right:calc(7% + 25px);width:60px;height:180px;
+.aa .glint{position:absolute;top:var(--h,600px);right:calc(14% + 18px);width:60px;height:180px;
   background:radial-gradient(ellipse at top,rgba(200,235,255,.55),transparent 70%);filter:blur(4px);animation:aatwinkle 4s ease-in-out infinite alternate}
 .aa .rock{position:absolute;top:calc(var(--h,600px) - 70px);left:4%;width:70px;height:90px;background:linear-gradient(135deg,#1c4f7d,#0a2443);clip-path:polygon(20% 100%,30% 30%,48% 0,62% 25%,70% 10%,85% 55%,100% 100%)}
-.aa .hero{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:center;padding:64px 0 48px}
+.aa .hero{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:center;padding:150px 0 56px}
 .aa .who{display:flex;flex-direction:column;gap:10px}
 .aa .photo{width:220px;height:220px;border-radius:50%;object-fit:cover;border:2px solid var(--ring);display:block;background:radial-gradient(circle at 50% 40%,#123c45,#0a1315 75%)}
 .aa h1{margin:6px 0 0;font-size:38px;line-height:1.05;letter-spacing:-.03em;font-weight:800}
@@ -249,12 +249,12 @@ var CATS = [
 @media (prefers-reduced-motion:reduce){.aa .spin,.aa .stars,.aa .cloud,.aa .glint{animation:none}}
 @media (max-width:760px){
  .aa .page{padding:0 18px}
- .aa .hero{grid-template-columns:1fr;gap:28px;padding:32px 0 36px}
+ .aa .hero{grid-template-columns:1fr;gap:28px;padding:96px 0 36px}
  .aa .who{align-items:center;text-align:center}
  .aa .photo{width:150px;height:150px}
- .aa .moon{width:70px;height:70px;top:24px;right:6%}
+ .aa .moon{width:62px;height:62px;top:20px;right:10%}
  .aa .moon::before{width:14px;height:14px;left:18px;top:36px}.aa .moon::after{width:9px;height:9px;left:42px;top:20px}
- .aa .glint{right:calc(6% + 15px)}
+ .aa .glint{right:calc(10% + 10px)}
  .aa .rock{display:none}
  .aa .btns{justify-content:center}
  .aa .bubble{padding:22px 20px}
@@ -379,8 +379,8 @@ var CATS = [
       '<div data-fitout aria-live="polite" style="display:flex;flex-direction:column;gap:12px"></div></section>' +
       '<section class="browse"><h2>Or browse everything</h2><div class="grid">' +
       [["Brand & identity", "/branding-identity"], ["Web & digital", "/web-digital-design"], ["3D work", "/3d-work"], ["Spatial & experiential", "/3d-experiences"], ["Illustration", "/illustration"],
-       ["Presentations", "/vinpearl"], ["Brand direction", "/brand-direction"], ["AI & creative tech", "/case-studies/amazon-luxury-premium-beauty-generative-commerce-imagery"]]
-        .map(function (p) { return '<a href="' + SITE + p[1] + '"><b>' + esc(p[0]) + '</b><span class="small mono">' + esc(p[1]) + "</span></a>"; }).join("") +
+       ["Presentations", "/vinpearl"], ["Brand direction", "/brand-direction"], ["AI & creative tech", "/case-studies/amazon-luxury-premium-beauty-generative-commerce-imagery", "Slap Comp case study"]]
+        .map(function (p) { return '<a href="' + SITE + p[1] + '"><b>' + esc(p[0]) + '</b><span class="small mono">' + esc(p[2] || p[1]) + "</span></a>"; }).join("") +
       '<a href="https://www.youtube.com/@aliveeTV" target="_blank" rel="noopener"><b>Video</b><span class="small mono">YouTube @aliveeTV</span></a>' +
       "</div></section></div></div>";
 
